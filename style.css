@@ -1,5 +1,4 @@
     body{
-        background-color: #daf0ee;
         margin: 0;
         padding: 0;
         font-family: sans-serif;
@@ -19,9 +18,41 @@
     }
 
     h1{
-        color: #3b413c;
+        color: black;
         font-size: 35px;
         font-weight: bold;
         font-family: Arial, Helvetica, sans-serif;
 
+    }
+
+    p{
+        color: #3b413c;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    section{
+        background: radial-gradient(circle, #94d1be, #3b413c);
+        height: 88vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .games{
+        background-color: #94d1be;
+        border-radius: 50px;
+        height: 45vh;
+        width: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    img{
+        width: 100px;
+        height: auto;
+        border-radius: 10px;
     }
