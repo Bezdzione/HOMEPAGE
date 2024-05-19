@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "play";
+}
+.hide {
+    display: none;
+}
+.wrapper {
+    background-image: url("zaidimoback.gif");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#game-container {
+    background-image: url("spejimas.gif");
+    background-attachment: fixed;
+    background-position: center;
+    height: 20vh;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+    border-radius: 18px;
+}
+#stats-container {
+    background: black;
+    color: #0e6b0e;
+    height: 30%;
+    width: 45%;
+    margin-top: 50px;
+    border-radius: 50px;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+}
+#skaicius {
+    width: 45%;
+    height: 30%;
+    font-size: 20px;
+    border-radius: 20px 0px 0px 20px;
+}
+#main-menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+}
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+#button-menu{
+    background: black;
+    position: absolute;
+    width: 20%;
+    height: 40%;
+    opacity: 70%;
+    border-radius: 30px;
+    margin-top: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+#startbtn{
+    cursor: pointer;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid dashed;
+    margin-top: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 8vh;
+    width: 80%;
+    font-size: 30px;
+    border-radius: 80px;
+    background: black;
+    color: white;
+    transition: background 0.75s ease-in-out;
+    transition: border-color 0.75s ease-in-out;
+    transition: color 0.75s ease-in-out;
+}
+#rulesbtn{
+    cursor: pointer;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid dashed; 
+    margin-top: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 8vh;
+    width: 80%;
+    font-size: 30px;
+    border-radius: 80px;
+    color: white;
+    background: black;
+    transition: background 0.75s ease-in-out;
+    transition: border-color 0.75s ease-in-out;
+    transition: color 0.75s ease-in-out;
+}
+
+#startbtn:hover, #rulesbtn:hover, #backbtn:hover {
+    background: white;
+    color: black;
+    border-color: grey;
+}
+
+#taisykles {
+    width: 100%;
+    height: 100vh;
+    background: black;
+    background-image: url("taisyklesback.gif");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#dezute {
+    background: black;
+    position: absolute;
+    width: 40%;
+    height: 80vh;
+    opacity: 70%;
+    border-radius: 30px;
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: white;
+}
+#dezute h1 {
+    text-align: center;
+    font-size: 400%;
+}
+#dezute h2 {
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: left;
+    font-size: 155%;
+}
+
+#backbtn {
+    cursor: pointer;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid dashed; 
+    margin-top: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 8vh;
+    width: 80%;
+    font-size: 30px;
+    border-radius: 80px;
+    color: white;
+    background: black;
+    transition: background 0.75s ease-in-out;
+    transition: border-color 0.75s ease-in-out;
+    transition: color 0.75s ease-in-out;
+}
+
+
+#spalva {
+    background: black;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+    width: 20%;
+    height: 80%;
+    border-radius: 50px;
+}
+
+#rodykle {
+    background: black;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+    width: 20%;
+    height: 80%;
+    border-radius: 50px;
+}
+
+#ejimai, #laikas {
+    background: black;
+    height: 45%;
+    width: 20%;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 50px; 
+}
+
+#priimti{
+    width: 18%;
+    height: 30%;
+    font-size: 20px;
+    border-radius: 0px 20px 20px 0px;
+}
