@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     window.location.href = "VISI ŽAIDIMAI/404/index.html";
                     break;
                 case "spėjimas":
-                     window.location.href = "VISI ŽAIDIMAI/ATSPĖK ŽAIDIMAS/index.html";
+                     window.location.href = "VISI ŽAIDIMAI/SPĖK ŽAIDIMAS/index.html";
                     break;
                 case "matematika":
                     window.location.href = "VISI ŽAIDIMAI/404/index.html";
