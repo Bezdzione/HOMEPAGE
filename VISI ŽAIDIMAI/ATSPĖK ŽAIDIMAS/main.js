@@ -8,11 +8,18 @@ const backButton = document.getElementById("backbtn");
 const timeValue = document.getElementById("laikas");
 const moves = document.getElementById("ejimai");
 const spejimas = document.getElementById("skaicius");
+const asnwerButton = document.getElementById("priimti");
+const endScreen = document.getElementById("end-screen");
+const rodykle = document.getElementById("rodykle");
+const spalva = document.getElementById("spalva");
+const rezultatai = document.getElementById("rezultatai");
+const menuButton = document.getElementById("menu-btn");
+const results = document.getElementById("results-container");
 
 
 let seconds = 0, minutes = 0;
 let movesCount = 0;
-
+let numeris = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
 
 startButton.addEventListener("click", () => {
     movesCount = 0;
@@ -21,22 +28,53 @@ startButton.addEventListener("click", () => {
     mainMenu.classList.add("hide");
     video.classList.add("hide");
     wrapper.classList.remove("hide");
-    let numeris = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
-    console.log(numeris);
+    endScreen.style.display = "none";
     interval = setInterval(timeGenerator, 1000);
-    moves.innerHTML = `<span>Spėjimų skaičius:</span> ${movesCount}`;
 });
 
+asnwerButton.addEventListener("click", () => {
+  const inputValue = spejimas.value;
+  spejimas.value = Number;
+  spejimas.value = "";
+  movesCounter ();
+  if (inputValue == numeris) {
+    endGame ();
+  };
+  if (inputValue > numeris){
+    rodykle.style.backgroundImage="url(raudona.png)";
+    rodykle.style.backgroundColor = "black";
+  }
+  else if (inputValue < numeris) {
+    rodykle.style.backgroundColor = "black";
+    rodykle.style.backgroundImage="url(zalia.png)";
+  }
+  if (Math.abs(inputValue - numeris)<= 25) {
+    spalva.style.backgroundColor = "green";
+  }
+  else if (Math.abs(inputValue - numeris) <= 50) {
+    spalva.style.backgroundColor = "yellow";
+  }
+  else {
+    spalva.style.backgroundColor = "red";
+  }
+});
 
-const inputValue = spejimas.value;
-console.log(inputValue);
+const endGame = () => {
+  mainMenu.classList.add("hide");
+  video.classList.add("hide");
+  wrapper.style.display = "none";
+  endScreen.classList.remove("hide");
+  results.classList.remove("hide");
+  rezultatai.innerHTML = `<span>Spejimu skaicius:</span>${movesCount}`;
+};
+
 
 rulesButton.addEventListener("click", () => {
     mainMenu.classList.add("hide");
     video.classList.add("hide");
     taisykles.classList.remove("hide");
-    wrapper.classList.remove("wrapper");
-    wrapper.classList.add("hide");
+    endScreen.style.display = "none";
+    wrapper.style.display = "none";
 });
 
 backButton.addEventListener("click", () =>{
@@ -44,6 +82,7 @@ backButton.addEventListener("click", () =>{
     mainMenu.classList.remove("hide");
     video.classList.remove("hide");
 })
+
 
 
 const timeGenerator = () => {
@@ -58,6 +97,12 @@ const timeGenerator = () => {
   };
   const movesCounter = () => {
     movesCount += 1;
-    moves.innerHTML = `<span>Ejimai:</span>${movesCount}`;
+    moves.innerHTML = `<span>Spejimu skaicius:</span>${movesCount}`;
   };
 
+  menuButton.addEventListener("click", () => {
+    endScreen.classList.add("hide");
+    mainMenu.classList.remove("hide");
+    video.classList.remove("hide");
+    results.classList.add("hide");
+  });
