@@ -64,6 +64,7 @@ const endGame = () => {
   video.classList.add("hide");
   wrapper.style.display = "none";
   endScreen.classList.remove("hide");
+  endScreen.style.display = "flex";
   results.classList.remove("hide");
   rezultatai.innerHTML = `<span>Spejimu skaicius:</span>${movesCount}`;
 };
