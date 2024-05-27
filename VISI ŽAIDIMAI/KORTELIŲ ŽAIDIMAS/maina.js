@@ -10,6 +10,7 @@ let cards;
 let interval;
 let firstCard = false;
 let secondCard = false;
+let lockBoard = false;
 
 const items = [
     {name:"balta", image:"balta.png"}, 
@@ -39,10 +40,12 @@ const timeGenerator = () => {
   let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
   timeValue.innerHTML = `<span>Laikas:</span>${minutesValue}:${secondsValue}`;
 };
+
 const movesCounter = () => {
   movesCount += 1;
-  moves.innerHTML = `<span>Ejimai:</span>${movesCount}`;
+  moves.innerHTML = `<span>Ėjimų skaičius:</span>${movesCount}`;
 };
+
 const generateRandom = (size = 4) => {
   let tempArray = [...items];
   let cardValues = [];
@@ -54,6 +57,7 @@ const generateRandom = (size = 4) => {
   }
   return cardValues;
 };
+
 const matrixGenerator = (cardValues, size = 4) => {
   gameContainer.innerHTML = "";
   cardValues = [...cardValues, ...cardValues];
@@ -72,36 +76,40 @@ const matrixGenerator = (cardValues, size = 4) => {
   cards = document.querySelectorAll(".card-container");
   cards.forEach((card) =>{
     card.addEventListener("click", () => {
-        if (!card.classList.contains("matched")){
-            card.classList.add("flipped");
-            if (!firstCard){
-                firstCard = card;
-                firstCardValue = card.getAttribute("data-card-value");
+        if (lockBoard || card.classList.contains("matched") || card.classList.contains("flipped")) return;
+
+        card.classList.add("flipped");
+        if (!firstCard){
+            firstCard = card;
+            firstCardValue = card.getAttribute("data-card-value");
+        }
+        else {
+            movesCounter();
+            secondCard = card;
+            let secondCardValue = card.getAttribute("data-card-value");
+
+            if (firstCardValue == secondCardValue){
+                firstCard.classList.add("matched");
+                secondCard.classList.add("matched");
+                firstCard = false;
+                winCount += 1;
+                if (winCount == Math.floor(cardValues.length/2)){
+                    result.innerHTML = `<h2>Sveikinimai!</h2> 
+                    <h4>Iš viso ėjimų: ${movesCount}</h4>`;
+                    clearInterval(interval);
+                    startButton.textContent = "Žaisti dar kartą"; // Add this line
+                }
             }
             else {
-                movesCounter();
-                secondCard = card;
-                let secondCardValue = card.getAttribute("data-card-value");
-                if (firstCardValue == secondCardValue){
-                    firstCard.classList.add("matched");
-                    secondCard.classList.add("matched");
-                    firstCard = false;
-                    winCount += 1;
-                    if (winCount == Math.floor(cardValues.length/2)){
-                        result.innerHTML = `<h2>Sveikinimai</h2> 
-                        <h4>Ejimų suma: ${movesCount}</h4>`;
-                        stopGame();
-                    }
-                }
-                else {
-                    let [tempFirst, tempSecond] = [firstCard, secondCard];
-                    firstCard = false;
-                    secondCard = false;
-                    let delay = setTimeout(() => {
-                        tempFirst.classList.remove("flipped");
-                        tempSecond.classList.remove("flipped");
-                    }, 900);
-                }
+                lockBoard = true;
+                let [tempFirst, tempSecond] = [firstCard, secondCard];
+                firstCard = false;
+                secondCard = false;
+                setTimeout(() => {
+                    tempFirst.classList.remove("flipped");
+                    tempSecond.classList.remove("flipped");
+                    lockBoard = false;
+                }, 900);
             }
         }
     });
@@ -116,23 +124,26 @@ startButton.addEventListener("click", () =>{
     stopButton.classList.remove("hide");
     startButton.classList.add("hide");
     interval = setInterval(timeGenerator, 1000);
-    moves.innerHTML = `<span>Ejimų skaičius:</span> ${movesCount}`;
+    moves.innerHTML = `<span>Ėjimų skaičius:</span> ${movesCount}`;
     initializer();
 });
 
-stopButton.addEventListener("click", (stopGame = () => {
-    controls.classList.remove("hide");
-    stopButton.classList.add("hide");
-    startButton.classList.remove("hide");
+stopButton.addEventListener("click", () => {
+    movesCount = 0;
+    seconds = 0;
+    minutes = 0;
+    winCount = 0;
     clearInterval(interval);
-}));
-
+    interval = setInterval(timeGenerator, 1000);
+    moves.innerHTML = `<span>Ėjimų skaičius:</span> ${movesCount}`;
+    result.innerText = "";
+    firstCard = false;
+    secondCard = false;
+    lockBoard = false;
+    initializer();
+});
 
 const initializer = () => {
-  result.innerText = "";
-  winCount = 0;
   let cardValues = generateRandom();
-  console.log(cardValues);
   matrixGenerator(cardValues);
 };
-

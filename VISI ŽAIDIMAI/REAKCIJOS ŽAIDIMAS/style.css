@@ -76,3 +76,23 @@ font-size: 30px;
     letter-spacing: 4px;
     cursor: pointer;
 }
+
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3B413C;
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    transform: scale(1.05);
+}

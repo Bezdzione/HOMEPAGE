@@ -27,9 +27,10 @@ startButton.addEventListener("click", () => {
     minutes = 0;
     mainMenu.classList.add("hide");
     video.classList.add("hide");
-    wrapper.classList.remove("hide");
+    wrapper.style.display = "flex"
     endScreen.style.display = "none";
     interval = setInterval(timeGenerator, 1000);
+    console.log(numeris)
 });
 
 asnwerButton.addEventListener("click", () => {
@@ -59,13 +60,43 @@ asnwerButton.addEventListener("click", () => {
   }
 });
 
+
+spejimas.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    const inputValue = spejimas.value;
+    spejimas.value = Number;
+    spejimas.value = "";
+    movesCounter ();
+    if (inputValue == numeris) {
+      endGame ();
+    };
+    if (inputValue > numeris){
+      rodykle.style.backgroundImage="url(raudona.png)";
+      rodykle.style.backgroundColor = "black";
+    }
+    else if (inputValue < numeris) {
+      rodykle.style.backgroundColor = "black";
+      rodykle.style.backgroundImage="url(zalia.png)";
+    }
+    if (Math.abs(inputValue - numeris)<= 25) {
+      spalva.style.backgroundColor = "green";
+    }
+    else if (Math.abs(inputValue - numeris) <= 50) {
+      spalva.style.backgroundColor = "yellow";
+    }
+    else {
+      spalva.style.backgroundColor = "red";
+    }
+  }
+  else{}
+});
+
 const endGame = () => {
   mainMenu.classList.add("hide");
   video.classList.add("hide");
   wrapper.style.display = "none";
-  endScreen.classList.remove("hide");
-  endScreen.style.display = "flex";
   results.classList.remove("hide");
+  endScreen.style.display = "flex";
   rezultatai.innerHTML = `<span>Spejimu skaicius:</span>${movesCount}`;
 };
 
@@ -107,3 +138,4 @@ const timeGenerator = () => {
     video.classList.remove("hide");
     results.classList.add("hide");
   });
+  
