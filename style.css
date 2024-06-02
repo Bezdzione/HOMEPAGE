@@ -27,7 +27,7 @@ h1 {
 
 section {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: calc(100vh - 100px);
@@ -38,9 +38,9 @@ section {
 .games {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
     margin-left: 20px;
     width: 45%;
 }
@@ -54,11 +54,11 @@ section {
     border-radius: 10px;
     padding: 10px;
     box-sizing: border-box;
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 .game-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.15);
 }
 
 .game-item img {
@@ -80,11 +80,23 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50px;
+    perspective: 1000px;
 }
 
-.image img {
-    width: 700px;
+.logo {
+    width: 630px;
     height: auto;
     border-radius: 50px;
+    transition: transform 0.3s, background-color 0.3s;
+    transform-style: preserve-3d;
+}
+
+.logo.hovered {
+    transform: rotateY(180deg);
+    width: auto;
+    height: 55%;
+}
+
+.game-item.dimmed {
+    opacity: 0.3;
 }

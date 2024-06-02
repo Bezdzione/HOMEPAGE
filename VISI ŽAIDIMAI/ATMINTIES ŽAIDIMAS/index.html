@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Įsiminkite skaičių</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button id="end" class="hide">Baigti žaidimą</button>
+
+        <p id="total"></p>
+        <div id="level">
+            <p>Pasirinkite lygį:</p>
+            <button id="easy" class="difficulty">Lengvas</button>
+            <button id="medium" class="difficulty">Vidutinis</button>
+            <button id="hard" class="difficulty">Sunkus</button>
+        </div>
+
+        <div id="game" class="hide">
+            <div id="numbers"></div>
+            <form>
+                <label for="answer">Įveskite skaičių</label>
+                <input type="text" id="answer" autocomplete="off">
+                <button type="submit" id="submit">Pateikti</button>
+            </form>
+
+            <div id="feedback"></div>
+
+            <button id="next" class="hide">Kitas</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <a href="../../index.html" class="back-button">Grįžti į pagrindinį puslapį</a>
+</body>
+</html>
